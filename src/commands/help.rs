@@ -6,6 +6,7 @@ pub fn print_help() {
     usage:
         git_pull-requests_cli --help
         git_pull-requests_cli init
-        git_pull-requests_cli review <OWNER> <PROJECT_NAME>
+        git_pull-requests_cli view <OWNER> <PROJECT_NAME>
+        git_pull-requests_cli view <OWNER> <PROJECT_NAME> <PULL-REQUEST_ID>
     ");
 }

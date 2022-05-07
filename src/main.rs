@@ -2,7 +2,7 @@ mod request;
 mod commands;
 
 use std::env;
-use crate::{request::account::get_account_identity, commands::review::print_pull_requests};
+use crate::{request::account::get_account_identity, commands::review::{print_pull_requests, print_pull_request}};
 
 fn main() {
 
@@ -19,7 +19,11 @@ fn main() {
         return;
     }
 
-    if args[1].to_lowercase() == "review" {
+    if args[1].to_lowercase() == "view" {
+        if args.len() == 5{
+            print_pull_request(&args[2], &args[3], args[4].parse().unwrap());
+            return;
+        }
         print_pull_requests(&args[2], &args[3]);
         return;
     }

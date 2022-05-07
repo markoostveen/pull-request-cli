@@ -31,9 +31,10 @@ pub fn api_request<T: DeserializeOwned>(method: reqwest::Method, url : &String, 
     }
 
     //println!("{}", response.text().unwrap());
-    let resp = response.json::<T>();
+    let resp_text = response.text().unwrap();
+    let resp = serde_json::from_str::<T>(&resp_text);
     if resp.is_err() {
-        return Err(println!("Unable to deserialize json '{}'", resp.err().unwrap().to_string()));
+        return Err(println!("Unable to deserialize json '{}', {}\n{}", resp.err().unwrap().to_string(), url, resp_text));
     }
 
     return Ok(resp.unwrap());
