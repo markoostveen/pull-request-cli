@@ -20,7 +20,7 @@ fn main() {
     }
 
     if args[1].to_lowercase() == "review" {
-        print_pull_requests(&args[2]);
+        print_pull_requests(&args[2], &args[3]);
         return;
     }
 

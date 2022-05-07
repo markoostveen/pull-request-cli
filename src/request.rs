@@ -1,4 +1,5 @@
 pub mod account;
+pub mod repo;
 
 use std::collections::HashMap;
 
