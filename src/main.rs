@@ -1,6 +1,7 @@
 mod request;
 mod help;
 mod init;
+mod request_types;
 
 use std::env;
 
@@ -19,5 +20,6 @@ fn main() {
         return;
     }
 
-    println!("{:#?}", request::api_request(String::from("https://api.github.com/users/defunkt")));
+    let url = String::from("https://api.github.com/users/octocat");
+    println!("{:#?}", request::api_request::<request_types::Test::ABC>(reqwest::Method::GET, &url));
 }
