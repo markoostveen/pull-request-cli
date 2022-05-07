@@ -4,6 +4,10 @@ use std::io::{Write, Read};
 
 static CONFIGFILENAME: &'static str = "git_pull-requests_cli.conf";
 
+fn is_escaped(c: char)-> bool {
+    return c == '\r' || c == '\n';
+}
+
 fn token_valid(access_token: &String) -> bool{
     return !access_token.starts_with(&String::from("ghp_"));
 }
@@ -13,6 +17,7 @@ pub fn exists() -> bool{
 }
 
 pub fn create(access_token: String){
+
     if token_valid(&access_token) {
         println!("Error: Invalid input, personal access tokens usually start with ghp_");
         return;
@@ -40,5 +45,5 @@ pub fn read() -> String{
         return String::from("");
     }
 
-    return token;
+    return token.replace(|c: char| !c.is_ascii() || is_escaped(c), "");
 }

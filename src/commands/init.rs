@@ -1,3 +1,5 @@
+use crate::request::account::get_account_identity;
+
 pub mod pa_token;
 
 pub fn check_first_run() -> bool{
@@ -19,5 +21,8 @@ pub fn init_cli_tool(){
 
     pa_token::create(access_token);
 
+    let account = get_account_identity();
+    println!("Username of personal access token '{}'", account.login);
+    
     println!("\n CLI tool is now setup")
 }
