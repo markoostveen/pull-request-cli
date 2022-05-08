@@ -20,12 +20,14 @@ fn main() {
     }
 
     if args[1].to_lowercase() == "view" {
-        if args.len() == 5{
+        if args.len() == 4 {
+            print_pull_requests(&args[2], &args[3]);
+            return;
+        }
+        else if args.len() == 5{
             print_pull_request(&args[2], &args[3], args[4].parse().unwrap());
             return;
         }
-        print_pull_requests(&args[2], &args[3]);
-        return;
     }
 
     if args[1].to_lowercase() == "comment" {
