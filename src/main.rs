@@ -1,10 +1,9 @@
 mod request;
 mod commands;
 
-use std::env;
 use crate::{request::{account::get_account_identity, repo::add_pull_request_comment}, commands::view::{print_pull_requests, print_pull_request}};
 
-use clap::{Arg, App, SubCommand, Command, Subcommand};
+use clap::{Arg, App, Command};
 
 fn main() {
 
@@ -112,7 +111,7 @@ fn main() {
         None => {}
     };
 
-    app.print_long_help();
+    let _unused = app.print_long_help();
 
     return;
 }
