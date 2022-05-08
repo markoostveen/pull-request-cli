@@ -2,7 +2,7 @@ mod request;
 mod commands;
 
 use std::env;
-use crate::{request::{account::get_account_identity, repo::add_pull_request_comment}, commands::review::{print_pull_requests, print_pull_request}};
+use crate::{request::{account::get_account_identity, repo::add_pull_request_comment}, commands::view::{print_pull_requests, print_pull_request}};
 
 use clap::{Arg, App, SubCommand, Command, Subcommand};
 
@@ -57,7 +57,7 @@ fn main() {
             )
         )
         .subcommand(
-            Command::new("Identity")
+            Command::new("identity")
             .about("Print identity of logged in user")
         );
 
