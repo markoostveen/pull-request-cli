@@ -17,7 +17,8 @@ pub fn get_pull_requests(owner: &String, project_name: &String) -> pull_request_
             [
                 (reqwest::header::AUTHORIZATION, HeaderValue::from_str(&token).unwrap())
             ]
-        )
+        ),
+        None
     );
 
     match response{
@@ -35,7 +36,8 @@ pub fn get_pull_request(owner: &String, project_name: &String, id: i32) -> pull_
             [
                 (reqwest::header::AUTHORIZATION, HeaderValue::from_str(&token).unwrap())
             ]
-        )
+        ),
+        None
     );
 
     match response{
@@ -53,11 +55,31 @@ pub fn get_pull_request_comments(owner: &String, project_name: &String, id: i32)
             [
                 (reqwest::header::AUTHORIZATION, HeaderValue::from_str(&token).unwrap())
             ]
-        )
+        ),
+        None
     );
 
     match response{
         Ok(e) => return e,
         Err(_e) => return comment::pull_request_comment::default()
+    };
+}
+
+pub fn add_pull_request_comment(owner: &String, project_name: &String, id: i32, comment: &String) -> pull_request::PullRequest {
+    let url = format!("https://api.github.com/repos/{}/{}/pulls/{}", owner, project_name, id);
+    let token = String::from("token ") + &pa_token::read();
+
+    let response =  api_request::<pull_request::PullRequest>(reqwest::Method::POST, &url,
+        HashMap::from(
+            [
+                (reqwest::header::AUTHORIZATION, HeaderValue::from_str(&token).unwrap())
+            ]
+        ),
+        Some(format!("{{\"body\":\"{}\"}}", comment))
+    );
+
+    match response{
+        Ok(e) => return e,
+        Err(_e) => return pull_request::PullRequest::default()
     };
 }

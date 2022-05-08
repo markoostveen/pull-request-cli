@@ -8,5 +8,6 @@ pub fn print_help() {
         git_pull-requests_cli init
         git_pull-requests_cli view <OWNER> <PROJECT_NAME>
         git_pull-requests_cli view <OWNER> <PROJECT_NAME> <PULL-REQUEST_ID>
+        git_pull-requests_cli comment <OWNER> <PROJECT_NAME> <PULL-REQUEST_ID> <MESSAGE>
     ");
 }

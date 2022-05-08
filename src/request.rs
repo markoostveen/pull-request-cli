@@ -6,7 +6,7 @@ use std::collections::HashMap;
 use reqwest::header::{HeaderName, HeaderValue};
 use serde::de::DeserializeOwned;
 
-pub fn api_request<T: DeserializeOwned>(method: reqwest::Method, url : &String, headers: HashMap<HeaderName,HeaderValue>) -> Result<T, ()> {
+pub fn api_request<T: DeserializeOwned>(method: reqwest::Method, url : &String, headers: HashMap<HeaderName,HeaderValue>, body: Option<String>) -> Result<T, ()> {
     let client = reqwest::blocking::Client::new();
 
     // Build the request with headers and parameters
@@ -15,6 +15,9 @@ pub fn api_request<T: DeserializeOwned>(method: reqwest::Method, url : &String, 
 
     for (key, value) in headers{
         request = request.header(key, value);
+    }
+    if body.is_some() {
+        request = request.body(body.unwrap());
     }
 
     // Send request

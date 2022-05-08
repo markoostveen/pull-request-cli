@@ -16,7 +16,8 @@ pub fn get_account_identity() -> account_info::AccountInfo{
             [
                 (reqwest::header::AUTHORIZATION, HeaderValue::from_str(&token).unwrap())
             ]
-        )
+        ),
+        None
     );
 
     match response{

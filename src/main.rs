@@ -2,7 +2,7 @@ mod request;
 mod commands;
 
 use std::env;
-use crate::{request::account::get_account_identity, commands::review::{print_pull_requests, print_pull_request}};
+use crate::{request::{account::get_account_identity, repo::add_pull_request_comment}, commands::review::{print_pull_requests, print_pull_request}};
 
 fn main() {
 
@@ -28,5 +28,11 @@ fn main() {
         return;
     }
 
+    if args[1].to_lowercase() == "comment" {
+        add_pull_request_comment(&args[2], &args[3], args[4].parse().unwrap(), &args[5]);
+        return;
+    }
+
     println!("logged in user: '{}'", get_account_identity().login);
+    commands::help::print_help();
 }
