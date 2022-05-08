@@ -4,7 +4,7 @@
 in order to build, make sure rust is installed.
 Then run in the root project directory.
 ```shell
-cargo update
+cargo build
 ```
 
 ## How to use

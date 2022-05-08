@@ -24,6 +24,4 @@ pub fn get_account_identity() -> account_info::AccountInfo{
         Ok(e) => return e,
         Err(_e) => return account_info::AccountInfo::default()
     };
-
-    //https://docs.github.com/en/rest/overview/resources-in-the-rest-api#authentication}
 }
