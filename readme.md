@@ -11,11 +11,19 @@ cargo update
 run with --help flags to view usage at any time.
 
 ```
-    Use --help to view all supported commands for cli tool
-    usage:
-        git_pull-requests_cli --help
-        git_pull-requests_cli init
-        git_pull-requests_cli view <OWNER> <PROJECT_NAME>
-        git_pull-requests_cli view <OWNER> <PROJECT_NAME> <PULL-REQUEST_ID>
-        git_pull-requests_cli comment <OWNER> <PROJECT_NAME> <PULL-REQUEST_ID> <MESSAGE>
+pull-request-cli 
+tool to help view & update pull-requests on github projects
+
+USAGE:
+    git_pull-requests_cli.exe [SUBCOMMAND]
+
+OPTIONS:
+    -h, --help    Print help information
+
+SUBCOMMANDS:
+    comment     Post a comment on an existing pull-request
+    help        Print this message or the help of the given subcommand(s)
+    identity    Print identity of logged in user
+    init        Initialize cli-tool and connect to github using personal access token
+    view        View pull-requests of a github repo
 ```
