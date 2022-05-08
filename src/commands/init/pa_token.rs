@@ -20,6 +20,7 @@ pub fn create(access_token: String){
 
     if token_valid(&access_token) {
         println!("Error: Invalid input, personal access tokens usually start with ghp_");
+        println!("command failed");
         return;
     }
 
