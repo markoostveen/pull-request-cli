@@ -46,11 +46,11 @@ pub fn get_pull_request(owner: &String, project_name: &String, id: i32) -> pull_
     };
 }
 
-pub fn get_pull_request_comments(owner: &String, project_name: &String, id: i32) -> comment::pull_request_comment {
+pub fn get_pull_request_comments(owner: &String, project_name: &String, id: i32) -> comment::PullRequestComment {
     let url = format!("https://api.github.com/repos/{}/{}/issues/{}/comments", owner, project_name, id);
     let token = String::from("token ") + &pa_token::read();
 
-    let response =  api_request::<comment::pull_request_comment>(reqwest::Method::GET, &url,
+    let response =  api_request::<comment::PullRequestComment>(reqwest::Method::GET, &url,
         HashMap::from(
             [
                 (reqwest::header::AUTHORIZATION, HeaderValue::from_str(&token).unwrap())
@@ -61,7 +61,7 @@ pub fn get_pull_request_comments(owner: &String, project_name: &String, id: i32)
 
     match response{
         Ok(e) => return e,
-        Err(_e) => return comment::pull_request_comment::default()
+        Err(_e) => return comment::PullRequestComment::default()
     };
 }
 

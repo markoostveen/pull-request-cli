@@ -581,7 +581,7 @@ pub struct Owner2 {
 #[serde(rename_all = "camelCase")]
 pub struct Links {
     #[serde(rename = "self")]
-    pub self_field: Self_field,
+    pub self_field: SelfField,
     pub html: Html,
     pub issue: Issue,
     pub comments: Comments,
@@ -595,7 +595,7 @@ pub struct Links {
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct Self_field {
+pub struct SelfField {
     pub href: String,
 }
 

@@ -2,7 +2,7 @@ use serde::Deserialize;
 use serde::Serialize;
 use serde_json::Value;
 
-pub type pull_request_comment = Vec<Comment>;
+pub type PullRequestComment = Vec<Comment>;
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
